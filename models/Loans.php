@@ -66,6 +66,6 @@ class Loans extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::className(), ['userId' => 'userId']);
+        return $this->hasOne(Loanusers::className(), ['userId' => 'userId']);
     }
 }

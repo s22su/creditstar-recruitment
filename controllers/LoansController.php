@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Loans;
 use app\models\LoansSearch;
+use app\models\LoanUsers;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -48,8 +49,13 @@ class LoansController extends Controller
      */
     public function actionView($id)
     {
+		$loanModel = $this->findModel($id);
+		$userModel = new LoanUsers();
+		$user = $userModel->findOne($loanModel->userId);
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $loanModel,
+			'user' => $user
         ]);
     }
 

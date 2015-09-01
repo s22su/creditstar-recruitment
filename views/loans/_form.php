@@ -10,6 +10,12 @@ use yii\widgets\ActiveForm;
 
 <div class="loans-form">
 
+	<?php
+	if(!$model->isNewRecord) {
+		Html::a('Users', ['loanusers/index'], ['class' => 'btn btn-lg btn-success']);
+	}
+	?>
+
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'userId')->textInput() ?>
