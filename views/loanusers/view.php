@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\LoanUsers */
@@ -39,5 +40,35 @@ $this->params['breadcrumbs'][] = $this->title;
             'lang:ntext',
         ],
     ]) ?>
+
+	<h1>User loans:</h1>
+	<br>
+
+	<?= GridView::widget([
+		'dataProvider' => $loans['dataProvider'],
+		'filterModel' => $loans['searchModel'],
+		'showOnEmpty' => false,
+		'filterModel' => null,
+		'columns' => [
+			[
+				'class' => 'yii\grid\SerialColumn'
+			],
+
+			'loanId',
+			'userId',
+			'amount',
+			'interest',
+			'duration',
+			'dateApplied',
+			'dateLoanEnds',
+			// 'campaign',
+			// 'status:boolean',
+
+			[
+				'class' => 'yii\grid\ActionColumn',
+				'controller' => 'loans'
+			],
+		],
+	]); ?>
 
 </div>

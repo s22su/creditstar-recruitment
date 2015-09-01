@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use app\models\LoanUsers;
+use app\models\Loans;
+use app\models\LoansSearch;
 use app\models\LoanUsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -48,8 +50,11 @@ class LoanusersController extends Controller
      */
     public function actionView($id)
     {
+		$loans = $this->findUserLoans($id);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+			'loans' => $loans
         ]);
     }
 
@@ -118,4 +123,27 @@ class LoanusersController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+	/**
+	 * Finds the Loans models based on userId value
+	 * If the model is not found, a 404 HTTP exception will be thrown.
+	 * @param integer $userId
+	 * @return bool|Loans the loaded models
+	 */
+	protected function findUserLoans($userId)
+	{
+		$searchModel = new LoansSearch();
+
+		$queryParams = [];
+		$queryParams['LoansSearch'] = [];
+		$queryParams['LoansSearch']['userId'] = $userId;
+
+		$dataProvider = $searchModel->search($queryParams);
+		$dataProvider->setPagination(false);
+
+		return [
+			'searchModel' => $searchModel,
+			'dataProvider' => $dataProvider
+		];
+	}
 }
