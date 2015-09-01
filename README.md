@@ -1,3 +1,6 @@
+# Exercise is completed
+To access CRUD forms you need to login using admin/admin credentials.
+
 #Description
 Test exercise for Creditstar Group
 
