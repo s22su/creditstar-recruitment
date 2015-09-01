@@ -21,8 +21,8 @@ $this->title = 'Front page';
 			<h1>Choose an action:</h1>
 			<p><br></p>
 			<p>
-				<?= Html::a('List users', ['loanusers/index'], ['class' => 'btn btn-lg btn-success']) ?>
-				<?= Html::a('List loans', ['site/login'], ['class' => 'btn btn-lg btn-primary']) ?>
+				<?= Html::a('Users', ['loanusers/index'], ['class' => 'btn btn-lg btn-success']) ?>
+				<?= Html::a('Loans', ['loans/index'], ['class' => 'btn btn-lg btn-primary']) ?>
 			</p>
 
 		<?php
