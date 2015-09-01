@@ -2,13 +2,11 @@
 use yii\helpers\Html;
 use  yii\web\User;
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+$this->title = 'Front page';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
 		<?php
 		if(Yii::$app->user->isGuest) {
 			?>
@@ -20,9 +18,12 @@ $this->title = 'My Yii Application';
 		}
 		else {
 			?>
-
-			<p><?= Html::a('List users', ['site/login'], ['class' => 'btn btn-lg btn-success']) ?></p>
-			<p><?= Html::a('List loans', ['site/login'], ['class' => 'btn btn-lg btn-success']) ?></p>
+			<h1>Choose an action:</h1>
+			<p><br></p>
+			<p>
+				<?= Html::a('List users', ['loanusers/index'], ['class' => 'btn btn-lg btn-success']) ?>
+				<?= Html::a('List loans', ['site/login'], ['class' => 'btn btn-lg btn-primary']) ?>
+			</p>
 
 		<?php
 		}
